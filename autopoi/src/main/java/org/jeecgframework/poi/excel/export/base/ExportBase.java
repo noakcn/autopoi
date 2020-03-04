@@ -75,7 +75,7 @@ public class ExportBase {
 
 	private Object formatValue(Object value, ExcelExportEntity entity) throws Exception {
 		Date temp = null;
-		if (value instanceof String) {
+		if (value instanceof String && StringUtils.isNotBlank((CharSequence) value)) {
 			SimpleDateFormat format = new SimpleDateFormat(entity.getDatabaseFormat());
 			temp = format.parse(value.toString());
 		} else if (value instanceof Date) {
